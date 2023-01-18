@@ -1,0 +1,379 @@
+/*Обнуление*/
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/*--------------------*/
+
+
+@font-face {
+    font-family: 'Trebuchet MS';
+    src: url('../../fonts/trebuchet-ms.eot');
+    src: local('☺'), url('../../fonts/trebuchet-ms.woff') format('woff'), url('../../fonts/trebuchet-ms.ttf') format('truetype'), url('../../fonts/trebuchet-ms.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Exo2.0';
+    src: url('../../fonts/exo-2-0.eot');
+    src: local('☺'), url('../../fonts/exo-2-0.woff') format('woff'), url('../../fonts/exo-2-0.ttf') format('truetype'), url('../../fonts/exo-2-0.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+#root {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background-image: url('../images/Pattern.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    padding: 36px 5px;
+
+    &__title {
+        font-family: 'Exo2.0';
+        font-size: 36px;
+        line-height: 44px;
+        text-align: center;
+        color: #FFFFFF;
+        text-shadow: 0px 1px 1px #000000;
+        margin-bottom: 24px;
+    }
+
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__column {
+        margin: 40px;
+
+        @media (max-width:1024px) {
+            margin: 30px;
+        }
+
+        @media (max-width:768px) {
+            margin: 10px;
+        }
+
+        @media (max-width:768px) {
+            margin-bottom: 40px;
+        }
+    }
+
+}
+
+
+
+
+
+.card {
+    font-family: 'Trebuchet MS';
+    font-style: normal;
+    font-weight: 400;
+    color: #FFFFFF;
+
+    &__body {
+        cursor: pointer;
+
+        &:hover .card__rectangle,
+        &:hover .card__main {
+            border-color: #2EA8E6;
+        }
+
+        &:hover .card__rectangle.selected,
+        &:hover .card__main.selected {
+            border-color: #E52E7A;
+        }
+
+        &:hover .card__circle {
+            background: #2EA8E6;
+        }
+
+        &:hover .card__circle.selected {
+            background: #E52E7A;
+        }
+
+        &:hover .card__corner {
+            background: linear-gradient(-45deg, #fff, #fff 28.5px, #2EA8E6 0, #2EA8E6 32px, transparent 0);
+        }
+
+        &:hover .card__corner.selected {
+            background: linear-gradient(-45deg, #fff, #fff 28.5px, #E52E7A 0, #E52E7A 32px, transparent 0);
+        }
+
+        &.disabled {
+            pointer-events: none;
+            filter: grayscale(100%);
+        }
+    }
+
+    &__header {
+        display: flex;
+        height: 44px;
+        margin-bottom: -1px;
+    }
+
+    &__corner {
+        position: relative;
+        width: 43px;
+        background: linear-gradient(-45deg, #fff, #fff 28.5px, #1698d9 0, #1698d9 32px, transparent 0);
+
+        &.selected {
+            background: linear-gradient(-45deg, #fff, #fff 28.5px, #D91667 0, #D91667 32px, transparent 0);
+        }
+
+        &.disabled {
+            background: linear-gradient(-45deg, #fff, #fff 28.5px, #B3B3B3 0, #B3B3B3 32px, transparent 0);
+        }
+    }
+
+    &__rectangle {
+        flex-grow: 1;
+        padding: 15px 0 0 8px;
+        border: 4px solid #1698d9;
+        border-bottom: none;
+        border-left: none;
+        border-radius: 0 12px 0 0;
+        background: #fff;
+
+        &.selected {
+            border-color: #D91667;
+        }
+
+        &.disabled {
+            border-color: #B3B3B3;
+
+        }
+    }
+
+    &__desc {
+        font-size: 16px;
+        line-height: 19px;
+        color: #666666;
+        margin-bottom: 5px;
+
+        &.approve {
+            color: #E62E7A;
+        }
+    }
+
+    &__main {
+        position: relative;
+        overflow: hidden;
+        width: 320px;
+        height: 437px;
+        margin-bottom: 15px;
+        padding: 0 46px 25px;
+        border: 4px solid #1698d9;
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        background: #fff;
+
+        &.selected {
+            border-color: #D91667;
+        }
+
+        &.disabled {
+            border-color: #B3B3B3;
+        }
+
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 48px;
+        color: #000000;
+        margin-bottom: 15px;
+
+        &.disabled {
+            color: #B3B3B3;
+
+        }
+    }
+
+    &__feature {
+        display: block;
+        font-size: 24px;
+        margin-top: 5px;
+    }
+
+    &__list {
+        position: relative;
+        z-index: 10;
+        color: #666;
+        font-size: 14px;
+        line-height: 16px;
+        word-wrap: break-word;
+    }
+
+    &__list-item {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+        color: #666666;
+    }
+
+    &__img {
+        position: absolute;
+        bottom: -95px;
+        left: -25px;
+    }
+
+    &__circle {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 81px;
+        height: 81px;
+        border-radius: 50%;
+        background: #1698d9;
+        text-align: center;
+
+        &.selected {
+            background: #D91667;
+        }
+
+        &.disabled {
+            background: #B3B3B3;
+        }
+    }
+
+    &__weight {
+        position: relative;
+        top: 20px;
+    }
+
+    &__amount {
+        font-size: 42px;
+        line-height: 22px;
+    }
+
+    &__measure {
+        font-size: 22px;
+    }
+
+    &__footer {
+        font-size: 13px;
+        line-height: 15px;
+        text-align: center;
+
+        &.disabled {
+            color: #FFFF66;
+        }
+    }
+
+    &__buy {
+        color: #1698d9;
+
+        &:hover {
+            color: #2EA8E6;
+        }
+
+        &.disabled {
+            color: #FFFF66;
+        }
+
+    }
+
+    &__link {
+        border-bottom: 1px dashed currentColor;
+        color: inherit;
+        cursor: pointer;
+    }
+
+
+}
